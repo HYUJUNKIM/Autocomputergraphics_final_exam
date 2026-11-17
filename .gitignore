@@ -1,0 +1,11 @@
+# Build output (CMakePresets binaryDir)
+out/
+build/
+
+# Machine-specific CMake presets (macOS paths live here; CMakePresets.json stays as submitted)
+CMakeUserPresets.json
+
+# IDE / OS
+.vs/
+.vscode/
+.DS_Store
