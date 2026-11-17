@@ -70,6 +70,11 @@ void MainWindow::setupUi()
     resize(1300, 850);
 
     m_vtkWidget = new QVTKOpenGLNativeWidget(this);
+#ifdef Q_OS_MACOS
+    // macOS trackpad delivers raw touches; VTK maps touch-down to LeftButtonPress,
+    // so merely moving the cursor rotated the camera. Use normal mouse events instead.
+    m_vtkWidget->setEnableTouchEventProcessing(false);
+#endif
     setCentralWidget(m_vtkWidget);
 
     QMenu* fileMenu = menuBar()->addMenu("File");
