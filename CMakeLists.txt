@@ -18,6 +18,16 @@ add_executable(Drive-vehicle
     MainWindow.cpp
     PidActorManager.h
     PidActorManager.cpp
+    MeshBuilder.h
+    MeshBuilder.cpp
+    RoadNetwork.h
+    RoadNetwork.cpp
+    VehicleModel.h
+    VehicleModel.cpp
+    LoadAnalyzer.h
+    LoadAnalyzer.cpp
+    LoadPlotWidget.h
+    LoadPlotWidget.cpp
 )
 
 target_link_libraries(Drive-vehicle PRIVATE
@@ -31,6 +41,8 @@ vtk_module_autoinit(
     MODULES ${VTK_LIBRARIES}
 )
 
+# Sources contain UTF-8 (Korean comments); must be set on the target, add_compile_options()
+# after add_executable() would not apply to it.
 if (MSVC)
-  add_compile_options(/utf-8)
+  target_compile_options(Drive-vehicle PRIVATE /utf-8)
 endif()
